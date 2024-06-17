@@ -12,10 +12,18 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
+local plugins = {
   "nvim-tree/nvim-tree.lua",
   "nvim-tree/nvim-web-devicons",
   {"nvim-lualine/lualine.nvim", dependencies = { 'nvim-tree/nvim-web-devicons' }}, 
+  {
+    'nvim-telescope/telescope.nvim', tag = '0.1.6',
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
   -- Themes
   "Shatur/neovim-ayu",
-})
+} 
+
+local opts = {}
+
+require("lazy").setup(plugins, opts)

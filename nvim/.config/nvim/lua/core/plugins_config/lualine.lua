@@ -3,7 +3,7 @@ require('lualine').setup {
     theme = 'ayu',
     icons_enabled = true,
   },
-  sections = {
+  tabline = {
     lualine_a = {
       {
         'filename',
