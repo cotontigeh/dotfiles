@@ -20,9 +20,6 @@ return {
     "ray-x/lsp_signature.nvim",
     event = "VeryLazy",
     opts = {},
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp-signature-help",
-    },
   },
   {
     "neovim/nvim-lspconfig",
