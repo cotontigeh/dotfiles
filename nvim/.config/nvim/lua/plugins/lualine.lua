@@ -7,13 +7,12 @@ return {
       icons_enabled = true,
     },
     tabline = {
-      lualine_a = {
-        {
-          'filename',
-          path = 1,
-        }
-      }
+      -- lualine_a = {
+      --   {
+      --     'sections',
+      --     path = 1,
+      --   }
+      -- }
     }
   }
 }
-
