@@ -10,8 +10,18 @@ return {
   opts = {
     auto_hide = false,
     animation = true,
+    icons = {
+      diagnostics = {
+        [vim.diagnostic.severity.ERROR] = { enabled = true, icon = "ﬀ" },
+        [vim.diagnostic.severity.WARN] = { enabled = false },
+        [vim.diagnostic.severity.INFO] = { enabled = false },
+        [vim.diagnostic.severity.HINT] = { enabled = true },
+      },
+    },
   },
   setup = function()
+    vim.g.barbar_auto_setup = false
+
     local map = vim.api.nvim_set_keymap
     local opts = { noremap = true, silent = true }
 
