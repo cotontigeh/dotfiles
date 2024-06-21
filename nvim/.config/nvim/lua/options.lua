@@ -58,3 +58,9 @@ vim.keymap.set("n", "<A-0>", "<Cmd>BufferLast<CR>")
 vim.keymap.set("n", "<A-p>", "<Cmd>BufferPin<CR>")
 -- Close buffer
 vim.keymap.set("n", "<A-c>", "<Cmd>BufferClose<CR>")
+
+
+
+-- Git
+vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {})
+
