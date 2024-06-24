@@ -23,9 +23,13 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local lspconfig = require("lspconfig")
+
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
@@ -54,8 +58,52 @@ return {
 
 			-- Keymaps
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {desc = "Go to definition"})
 			vim.keymap.set("n", "<leader>q", vim.lsp.buf.code_action, {})
+
+			local telescope = require("telescope.builtin")
+			vim.api.nvim_create_autocmd("LspAttach", {
+				group = vim.api.nvim_create_augroup("lsp_keybindings", { clear = true }),
+				desc = "LSP actions",
+				callback = function(event)
+					local opts = { buffer = event.buf }
+
+					-- View diagnostics
+					vim.keymap.set("n", "<leader>vd", function()
+						vim.diagnostic.open_float()
+				end, opts)
+
+					-- Go to next error
+					vim.keymap.set("n", "ge", function()
+						vim.diagnostic.goto_next()
+					end, opts)
+
+					-- Go to previous error
+					vim.keymap.set("n", "gpe", function()
+						vim.diagnostic.goto_prev()
+					end, opts)
+
+					-- List errors with telescope
+					vim.keymap.set("n", "<leader>le", telescope.diagnostics, opts)
+
+					-- Rename
+					vim.keymap.set("n", "<leader>R", function()
+						vim.lsp.buf.rename()
+					end, opts)
+
+					-- Signature help
+					vim.keymap.set("i", "<C-h>", function()
+						vim.lsp.buf.signature_help()
+					end, opts)
+
+					-- Get references
+					vim.keymap.set("n", "gr", function()
+						telescope.lsp_references({ include_declaration = false })
+					end, opts)
+
+					vim.keymap.set("n", "gi", telescope.lsp_implementations, opts)
+				end,
+			})
 		end,
 	},
 }
