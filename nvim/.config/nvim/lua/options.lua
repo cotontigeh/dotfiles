@@ -34,7 +34,7 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 --Line numbers
 vim.wo.number = true
 
-vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
+vim.keymap.set("n", "<leader>hh", ":nohlsearch<CR>", { desc = "Reset search" })
 
 -- barbar
 -- Move to previous/next
@@ -59,8 +59,5 @@ vim.keymap.set("n", "<A-p>", "<Cmd>BufferPin<CR>")
 -- Close buffer
 vim.keymap.set("n", "<A-c>", "<Cmd>BufferClose<CR>")
 
-
-
 -- Git
 vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {})
-
