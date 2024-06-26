@@ -58,7 +58,7 @@ return {
 
 			-- Keymaps
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {desc = "Go to definition"})
+			vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 			vim.keymap.set("n", "<leader>q", vim.lsp.buf.code_action, {})
 
 			local telescope = require("telescope.builtin")
@@ -71,20 +71,25 @@ return {
 					-- View diagnostics
 					vim.keymap.set("n", "<leader>vd", function()
 						vim.diagnostic.open_float()
-				end, opts)
+					end, { buffer = event.buf, desc = "Diagnostic message" })
 
 					-- Go to next error
-					vim.keymap.set("n", "ge", function()
+					vim.keymap.set("n", "<leader>vn", function()
 						vim.diagnostic.goto_next()
-					end, opts)
+					end, { buffer = event.buf, desc = "Diagnostic next" })
 
 					-- Go to previous error
-					vim.keymap.set("n", "gpe", function()
+					vim.keymap.set("n", "<leader>vp", function()
 						vim.diagnostic.goto_prev()
-					end, opts)
+					end, { buffer = event.buf, desc = "Diagnostic prev" })
 
 					-- List errors with telescope
-					vim.keymap.set("n", "<leader>le", telescope.diagnostics, opts)
+					vim.keymap.set(
+						"n",
+						"<leader>vl",
+						telescope.diagnostics,
+						{ buffer = event.buf, desc = "Diagnostic telescope list" }
+					)
 
 					-- Rename
 					vim.keymap.set("n", "<leader>R", function()

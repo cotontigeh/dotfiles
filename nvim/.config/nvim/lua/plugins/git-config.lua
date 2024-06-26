@@ -5,8 +5,8 @@ return {
 			require("gitsigns").setup({
 				current_line_blame = true,
 			})
-			vim.keymap.set("n", "<leader>hr", require("gitsigns").reset_hunk, { desc = "Git reset hunk" })
-			vim.keymap.set("n", "<leader>hd", require("gitsigns").diffthis, { desc = "Git show diff" })
+			vim.keymap.set("n", "<leader>gr", require("gitsigns").reset_hunk, { desc = "Git reset hunk" })
+			vim.keymap.set("n", "<leader>gd", require("gitsigns").diffthis, { desc = "Git show diff" })
 		end,
 	},
 	{
