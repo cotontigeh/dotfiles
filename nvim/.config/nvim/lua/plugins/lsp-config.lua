@@ -89,7 +89,7 @@ return {
 					-- Rename
 					vim.keymap.set("n", "<leader>R", function()
 						vim.lsp.buf.rename()
-					end, opts)
+					end, { desc = "Rename symbol", buffer = event.buf })
 
 					-- Signature help
 					vim.keymap.set("i", "<C-h>", function()

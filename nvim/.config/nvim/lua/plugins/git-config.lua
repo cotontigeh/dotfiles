@@ -5,10 +5,14 @@ return {
 			require("gitsigns").setup({
 				current_line_blame = true,
 			})
-			vim.keymap.set("n", "<leader>hr", require("gitsigns").reset_hunk, {desc = "Git reset hunk"})
+			vim.keymap.set("n", "<leader>hr", require("gitsigns").reset_hunk, { desc = "Git reset hunk" })
+			vim.keymap.set("n", "<leader>hd", require("gitsigns").diffthis, { desc = "Git show diff" })
 		end,
 	},
 	{
 		"tpope/vim-fugitive",
+		config = function()
+			vim.keymap.set("n", "<leader>gg", "<Cmd>Git<CR>", { desc = "Git" })
+		end,
 	},
 }

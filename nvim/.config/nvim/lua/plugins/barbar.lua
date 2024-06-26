@@ -7,12 +7,20 @@ return {
 	opts = {
 		auto_hide = false,
 		animation = true,
+		tabpages = true,
 		icons = {
+			buffer_number = false,
+			buffer_index = true,
 			diagnostics = {
 				[vim.diagnostic.severity.ERROR] = { enabled = true, icon = "ﬀ" },
 				[vim.diagnostic.severity.WARN] = { enabled = false },
 				[vim.diagnostic.severity.INFO] = { enabled = false },
 				[vim.diagnostic.severity.HINT] = { enabled = true },
+			},
+			gitsigns = {
+				added = { enabled = true, icon = "+" },
+				changed = { enabled = true, icon = "~" },
+				deleted = { enabled = true, icon = "-" },
 			},
 		},
 	},
