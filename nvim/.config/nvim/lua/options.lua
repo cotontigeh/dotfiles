@@ -36,6 +36,10 @@ vim.wo.number = true
 
 vim.keymap.set("n", "<leader>hh", ":nohlsearch<CR>", { desc = "Reset search" })
 
+-- view
+vim.keymap.set("n", "<leader>vh", ":split<CR>", { desc = "Horizontal split"})
+vim.keymap.set("n", "<leader>vv", ":vsplit<CR>", { desc = "Vertical split"})
+
 -- barbar
 -- Move to previous/next
 vim.keymap.set("n", "<A-,>", "<Cmd>BufferPrevious<CR>")
@@ -59,5 +63,3 @@ vim.keymap.set("n", "<A-p>", "<Cmd>BufferPin<CR>")
 -- Close buffer
 vim.keymap.set("n", "<A-c>", "<Cmd>BufferClose<CR>")
 
--- Git
-vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {})
