@@ -63,6 +63,7 @@ return {
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 			vim.keymap.set("n", "<leader>q", vim.lsp.buf.code_action, {})
+      vim.keymap.set("n", "<leader>ll", ":LspRestart<CR>", { desc = "Reload LSP" })
 
 			local telescope = require("telescope.builtin")
 			vim.api.nvim_create_autocmd("LspAttach", {
