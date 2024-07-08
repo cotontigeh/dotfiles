@@ -63,3 +63,9 @@ vim.keymap.set("n", "<A-p>", "<Cmd>BufferPin<CR>")
 -- Close buffer
 vim.keymap.set("n", "<A-c>", "<Cmd>BufferClose<CR>")
 
+-- Folding
+vim.opt.fillchars = { fold = " " }
+vim.opt.foldmethod = "indent"
+vim.opt.foldenable = false
+vim.opt.foldlevel = 99
+vim.g.markdown_folding = 1 -- enable markdown folding
