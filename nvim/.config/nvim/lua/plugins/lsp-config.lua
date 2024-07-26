@@ -42,7 +42,7 @@ return {
 			lspconfig.eslint.setup({
 				capabilities = capabilities,
 			})
-      lspconfig.gopls.setup({
+			lspconfig.gopls.setup({
 				capabilities = capabilities,
 			})
 			-- lsp signature
@@ -63,7 +63,7 @@ return {
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
 			vim.keymap.set("n", "<leader>q", vim.lsp.buf.code_action, {})
-      vim.keymap.set("n", "<leader>ll", ":LspRestart<CR>", { desc = "Reload LSP" })
+			vim.keymap.set("n", "<leader>ll", ":LspRestart<CR>", { desc = "Reload LSP" })
 
 			local telescope = require("telescope.builtin")
 			vim.api.nvim_create_autocmd("LspAttach", {
@@ -111,6 +111,9 @@ return {
 					end, opts)
 
 					vim.keymap.set("n", "gi", telescope.lsp_implementations, opts)
+
+					-- eslint
+					vim.keymap.set("n", "<leader>lf", ":EslintFixAll<CR>", { desc = "Eslint Fix All" })
 				end,
 			})
 		end,

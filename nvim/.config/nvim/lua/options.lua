@@ -12,6 +12,8 @@ vim.opt.cursorline = true
 vim.opt.autoread = true
 vim.opt.relativenumber = true
 
+-- Buffer
+vim.keymap.set("n", "<leader>br", ":e!<CR>", {desc = "Reload current buffer"})
 -- use spaces for tabs and whatnot
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2

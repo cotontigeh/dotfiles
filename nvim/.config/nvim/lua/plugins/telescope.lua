@@ -21,7 +21,7 @@ return {
 
       -- Keymaps
       vim.keymap.set("n", "<C-p>", builtin.find_files, {})
-      vim.keymap.set("n", "<C-b>", builtin.buffers, {})
+      vim.keymap.set("n", "<leader>bb", builtin.buffers, {desc = "Show open buffers"})
     end,
   },
   {
