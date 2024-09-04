@@ -42,9 +42,19 @@ vim.wo.number = true
 
 vim.keymap.set("n", "<leader>hh", ":nohlsearch<CR>", { desc = "Reset search" })
 
--- view
+-- Windows
 vim.keymap.set("n", "<leader>vh", ":split<CR>", { desc = "Horizontal split"})
 vim.keymap.set("n", "<leader>vv", ":vsplit<CR>", { desc = "Vertical split"})
+vim.keymap.set("n", "<leader>vee", ":res<CR>", { desc = "Window max height"})
+vim.keymap.set("n", "<leader>ve5", ":res 25<CR>", { desc = "Window classic height"})
+vim.keymap.set("n", "<leader>vww", ":vert res<CR>", { desc = "Window max width"})
+vim.keymap.set("n", "<leader>vw5", ":vert res 120<CR>", { desc = "Window classic width"})
+
+vim.keymap.set("n", "<leader>-", ":vert res -5<CR>", { desc = "Window decrease width"})
+vim.keymap.set("n", "<leader>=", ":vert res +5<CR>", { desc = "Window increase width"})
+
+vim.keymap.set("n", "<leader>_", ":res -5<CR>", { desc = "Window decrease height"})
+vim.keymap.set("n", "<leader>+", ":res +5<CR>", { desc = "Window increase height"})
 
 -- barbar
 -- Move to previous/next
