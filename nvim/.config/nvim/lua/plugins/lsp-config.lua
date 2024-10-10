@@ -49,7 +49,19 @@ return {
 				capabilities = capabilities,
 			})
       lspconfig.denols.setup({
-        root_dir = lspconfig.util.root_pattern("deno.json"),
+        root_dir = function(fname)
+          -- return nil if no specified root_files match in the root of the current directory
+          local root_files = {
+            '.deno-neovim'
+          }
+          local root = lspconfig.util.find_git_ancestor(fname) or lspconfig.util.path.dirname(fname)
+          for _, file in ipairs(root_files) do
+            if lspconfig.util.path.exists(lspconfig.util.path.join(root, file)) then
+              return root
+            end
+          end
+          return nil
+        end,
         capabilities = capabilities,
         on_attach = function()
           local active_clients = vim.lsp.get_active_clients()
