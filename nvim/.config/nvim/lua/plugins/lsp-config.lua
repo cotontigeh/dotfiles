@@ -12,7 +12,7 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				auto_install = true,
-				ensure_installed = { "lua_ls", "ts_ls", "html", "eslint", "gopls", "yamlls", "jsonls" },
+				ensure_installed = { "lua_ls", "ts_ls", "html", "eslint", "gopls", "yamlls", "jsonls", "denols" },
 			})
 		end,
 	},
@@ -47,6 +47,10 @@ return {
 			lspconfig.gopls.setup({
 				capabilities = capabilities,
 			})
+      lspconfig.denols.setup({
+				capabilities = capabilities,
+			})
+
 			-- lsp signature
 			require("lsp_signature").on_attach({
 				bind = true,
