@@ -34,6 +34,7 @@ return {
 				capabilities = capabilities,
 			})
 			lspconfig.ts_ls.setup({
+        root_dir = lspconfig.util.root_pattern("package.json"),
 				capabilities = capabilities,
         importModuleSpecifierPreference = 'relative',
         importModuleSpecifierEnding = 'minimal',
@@ -48,8 +49,18 @@ return {
 				capabilities = capabilities,
 			})
       lspconfig.denols.setup({
-				capabilities = capabilities,
-			})
+        root_dir = lspconfig.util.root_pattern("deno.json"),
+        capabilities = capabilities,
+        on_attach = function()
+          local active_clients = vim.lsp.get_active_clients()
+          for _, client in pairs(active_clients) do
+            -- stop tsserver if denols is already active
+            if client.name == "ts_ls" then
+              client.stop()
+            end
+          end
+        end,
+      })
 
 			-- lsp signature
 			require("lsp_signature").on_attach({
