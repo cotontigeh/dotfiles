@@ -12,7 +12,7 @@ return {
 		config = function()
 			require("mason-lspconfig").setup({
 				auto_install = true,
-				ensure_installed = { "lua_ls", "tsserver", "html", "eslint", "gopls", "yamlls", "jsonls" },
+				ensure_installed = { "lua_ls", "ts_ls", "html", "eslint", "gopls", "yamlls", "jsonls" },
 			})
 		end,
 	},
@@ -33,8 +33,10 @@ return {
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
-			lspconfig.tsserver.setup({
+			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
+        importModuleSpecifierPreference = 'relative',
+        importModuleSpecifierEnding = 'minimal',
 			})
 			lspconfig.html.setup({
 				capabilities = capabilities,
