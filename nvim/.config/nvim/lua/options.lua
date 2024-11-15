@@ -85,3 +85,10 @@ vim.opt.foldmethod = "indent"
 vim.opt.foldenable = false
 vim.opt.foldlevel = 99
 vim.g.markdown_folding = 1 -- enable markdown folding
+
+-- Find selected word
+vim.keymap.set("v", "<leader>r", "y:%s/<c-r>\"/", {})
+
+-- Error navigation
+vim.keymap.set("n", "<C-j>", ':lua vim.diagnostic.goto_next()<CR>zz', {})
+vim.keymap.set("n", "<C-k>", ':lua vim.diagnostic.goto_prev()<CR>zz', {})

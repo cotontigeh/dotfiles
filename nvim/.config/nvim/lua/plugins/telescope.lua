@@ -22,6 +22,7 @@ return {
       -- Keymaps
       vim.keymap.set("n", "<C-p>", builtin.find_files, {})
       vim.keymap.set("n", "<leader>bb", builtin.buffers, {desc = "Show open buffers"})
+      vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "List diagnostics" })
     end,
   },
   {
@@ -40,6 +41,7 @@ return {
       require("telescope").load_extension("live_grep_args")
 
       vim.keymap.set("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+      vim.keymap.set("v", "<leader>ff", "y:lua require('telescope.builtin').live_grep()<CR><c-r>\"", {})
     end,
   },
 }
