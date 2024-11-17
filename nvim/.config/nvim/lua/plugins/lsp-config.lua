@@ -29,25 +29,40 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local lspconfig = require("lspconfig")
+      local util = require('lspconfig.util')
 
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
 			})
-			lspconfig.ts_ls.setup({
-        root_dir = lspconfig.util.root_pattern("package.json"),
-				capabilities = capabilities,
-        importModuleSpecifierPreference = 'relative',
-        importModuleSpecifierEnding = 'minimal',
-			})
+			local ts_root = util.root_pattern("package.json")(vim.fn.getcwd())
+      if ts_root then
+
+        -- TS Server
+        lspconfig.ts_ls.setup({
+          root_dir = ts_root,
+          capabilities = capabilities,
+          settings = {
+            typescript = {
+              importModuleSpecifierPreference = 'relative',
+              importModuleSpecifierEnding = 'minimal',
+            }
+          }
+        })
+
+        -- ESLINT
+        lspconfig.eslint.setup({
+          capabilities = capabilities,
+        })
+      end
+
 			lspconfig.html.setup({
 				capabilities = capabilities,
 			})
-			lspconfig.eslint.setup({
-				capabilities = capabilities,
-			})
+
 			lspconfig.gopls.setup({
 				capabilities = capabilities,
 			})
+
       lspconfig.denols.setup({
         root_dir = function(fname)
           -- return nil if no specified root_files match in the root of the current directory
