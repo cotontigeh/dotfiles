@@ -143,6 +143,13 @@ return {
 
 					-- eslint
 					vim.keymap.set("n", "<leader>lf", ":EslintFixAll<CR>", { desc = "Eslint Fix All" })
+
+          -- deno fmt
+          vim.keymap.set("n", "<leader>ld", function()
+            local output = vim.fn.system('deno fmt')
+            print(output)
+            vim.api.nvim_command('edit!')
+          end, { noremap = true, silent = true, desc = "Deno format" })
 				end,
 			})
 		end,
