@@ -162,7 +162,7 @@ return {
           -- deno fmt
           vim.keymap.set("n", "<leader>ld", function()
             vim.api.nvim_command('write')
-            local output = vim.fn.system('deno fmt')
+            local output = vim.fn.system('deno fmt ' .. vim.fn.expand('%:p'))
             print(output)
             vim.api.nvim_command('edit!')
           end, { noremap = true, silent = true, desc = "Deno format" })
