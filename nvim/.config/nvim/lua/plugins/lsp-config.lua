@@ -67,7 +67,7 @@ return {
         root_dir = function(fname)
           -- return nil if no specified root_files match in the root of the current directory
           local root_files = {
-            '.deno-neovim'
+            'deno.json'
           }
           local root = lspconfig.util.find_git_ancestor(fname) or lspconfig.util.path.dirname(fname)
           for _, file in ipairs(root_files) do
